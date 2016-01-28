@@ -1,0 +1,1 @@
+My attempt at creating The Game of Life originally created by John Horton Conway in 1970. More can be read about it [here](https://goo.gl/Uys8G6)
