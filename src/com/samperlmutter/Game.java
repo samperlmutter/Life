@@ -20,8 +20,8 @@ public class Game {
 	public static JPanel mainPanel = new JPanel();
 	public static JPanel gridPanel = new JPanel();
 	public static GridLayout layout = new GridLayout(Constants.X_CELLS, Constants.Y_CELLS);
-	public static boolean[][] cellState = new boolean[Constants.X_CELLS][Constants.Y_CELLS];
-	public static JButton[][] cells = new JButton[Constants.X_CELLS][Constants.Y_CELLS];
+//	public static boolean[][] cellState = new boolean[Constants.X_CELLS][Constants.Y_CELLS];
+//	public static JButton[][] cells = new JButton[Constants.X_CELLS][Constants.Y_CELLS];
 	
 	public Game() {
 		System.out.println("Cells: " + Constants.X_CELLS);
@@ -33,13 +33,13 @@ public class Game {
 		
 		for (int i = 0; i < cells.length; i++) {
 			for (int j = 0; j < cells[i].length; j++) {
-				cells[i][j] = new JButton();
-				cells[i][j].addActionListener(new ButtonListener());
-				cells[i][j].setPreferredSize(new Dimension(Constants.CELL_DIMENSION, Constants.CELL_DIMENSION));
-				cells[i][j].setBackground(Color.WHITE);
-				cells[i][j].setBorder(new LineBorder(Color.BLACK, 1));
-				cells[i][j].setBorderPainted(true);
-				cellState[i][j] = false;
+//				cells[i][j] = new JButton();
+//				cells[i][j].addActionListener(new ButtonListener());
+//				cells[i][j].setPreferredSize(new Dimension(Constants.CELL_DIMENSION, Constants.CELL_DIMENSION));
+//				cells[i][j].setBackground(Color.WHITE);
+//				cells[i][j].setBorder(new LineBorder(Color.BLACK, 1));
+//				cells[i][j].setBorderPainted(true);
+//				cellState[i][j] = false;
 			}
 		}
 		
@@ -59,32 +59,6 @@ public class Game {
 	public static void main(String[] args) {
 		Game game = new Game();
 		Game.window.setVisible(true);
-	}
-	
-	private class ButtonListener implements ActionListener {
-
-		@Override
-		public void actionPerformed(ActionEvent e) {
-			JButton cell;
-			if(e.getSource() instanceof JButton) {
-				cell = ((JButton)e.getSource());
-				System.out.println(getCellLocation(cell)[0] + ", " + getCellLocation(cell)[1]);
-			}
-		}
-		
-		private int[] getCellLocation(JButton cell) {
-			int[] coordinate = new int[2];
-			
-			for (int i = 0; i < cells.length; i++) {
-				if (Arrays.asList(cells[i]).indexOf(cell) != -1) {
-					coordinate[0] = i;
-				}
-			}
-			coordinate[1] = Arrays.asList(cells[coordinate[0]]).indexOf(cell);
-			
-			return coordinate;
-		}
-
 	}
 	
 }
