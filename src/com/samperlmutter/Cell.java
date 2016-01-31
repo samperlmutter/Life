@@ -4,7 +4,6 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.Arrays;
 
 import javax.swing.JButton;
 import javax.swing.border.LineBorder;
@@ -20,18 +19,13 @@ public class Cell extends JButton {
 		cellState = false;
 		cell.addActionListener(new ButtonListener());
 		cell.setPreferredSize(new Dimension(Constants.CELL_DIMENSION, Constants.CELL_DIMENSION));
-		cell.setBackground(getState());
-		cell.setBorder(new LineBorder(Color.BLACK, 1));
-	}
-
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-		
+		cell.setBackground(Color.BLACK);
+		cell.setBorder(new LineBorder(Color.WHITE, 0));
 	}
 	
 	private void changeState() {
 		cellState = !cellState;
-		cell.repaint();
+		cell.setBackground(getState());
 	}
 	
 	private Color getState() {
