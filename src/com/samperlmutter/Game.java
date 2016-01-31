@@ -12,6 +12,7 @@ public class Game {
 		grid = new Grid(Constants.X_CELLS, Constants.Y_CELLS);
 		window.setSize(Constants.WINDOW_WIDTH, Constants.WINDOW_HEIGHT);
 		window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		mainPanel.setBackground(Constants.BACKGROUND_COLOR);
 		
 		mainPanel.add(grid);
 		

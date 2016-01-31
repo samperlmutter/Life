@@ -6,7 +6,6 @@ import java.util.List;
 
 import javax.swing.JPanel;
 
-@SuppressWarnings("serial")
 public class Grid extends JPanel {
 	public int rows;
 	public int columns;
