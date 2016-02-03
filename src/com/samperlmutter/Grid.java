@@ -72,6 +72,10 @@ public class Grid extends JPanel {
 			}
 		}
 		//life rules logic
-		
+		if (liveNeighbors == 3 && !cell.getMortality()) {
+			cell.reincarnate();
+		} else if (liveNeighbors <= 1 || liveNeigbors >= 4) {
+			cell.die();
+		}
 	}
 }
