@@ -53,4 +53,25 @@ public class Grid extends JPanel {
 		}
 		return coordinate;
 	}
+	
+	public Cell getCell(int x, int y) {
+		return cells.get(x).get(y);
+	}
+	
+	public void decideFate(Cell cell) {
+		int liveNeighbors = 0;
+		int x = getCellCoordinate(cell)[0];
+		int y = getCellCoordinate(cell)[1];
+		int[][] neighborCoordinate = {{-1, 1}, {0, 1}, {1, 1}, {-1, 0}, {1, 0}, {-1, -1}, {0, 1}, {1, -1}};
+		
+		for (int i = 0; i < neighborCoordinate.length; i++) {
+			if (getCell(x, y)) {
+				if (getCell(x, y).getMortality()) {
+					liveNeighbors++;
+				}
+			}
+		}
+		//life rules logic
+		
+	}
 }

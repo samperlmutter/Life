@@ -7,6 +7,7 @@ public class Game {
 	public JFrame window = new JFrame(Constants.WINDOW_TITLE);
 	public static JPanel mainPanel = new JPanel();
 	public static Grid grid;
+	public static Game game;
 	
 	public Game() {
 		grid = new Grid(Constants.X_CELLS, Constants.Y_CELLS);
@@ -21,7 +22,7 @@ public class Game {
 	}
 
 	public static void main(String[] args) {
-		Game game = new Game();
+		game = new Game();
 		game.window.setVisible(true);
 	}
 	

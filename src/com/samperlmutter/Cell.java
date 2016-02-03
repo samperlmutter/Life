@@ -13,12 +13,12 @@ import javax.swing.plaf.metal.MetalButtonUI;
 
 public class Cell extends JButton {
 	
-	public boolean cellState;
+	private boolean hasPulse;
 	private Cell cell;
 	
 	public Cell() {
 		cell = this;
-		cellState = false;
+		hasPulse = false;
 		cell.addMouseListener(new ButtonListener());
 		cell.setPreferredSize(new Dimension(Constants.CELL_DIMENSION, Constants.CELL_DIMENSION));
 		cell.setBackground(Constants.DEAD_CELL_BACKGROUND_COLOR);
@@ -26,13 +26,23 @@ public class Cell extends JButton {
 		cell.setUI(new UI());
 	}
 	
-	private void changeState() {
-		cellState = !cellState;
-		cell.setBackground(getState());
+	public void changeMortality() {
+		hasPulse = !hasPulse;
+		cell.setBackground((hasPulse ? Constants.LIVE_CELL_BACKGROUND_COLOR : Constants.DEAD_CELL_BACKGROUND_COLOR));
 	}
 	
-	private Color getState() {
-		return cellState ? Constants.LIVE_CELL_BACKGROUND_COLOR : Constants.DEAD_CELL_BACKGROUND_COLOR;
+	public void die() {
+		hasPulse = false;
+		cell.setBackground(Constants.DEAD_CELL_BACKGROUND_COLOR);
+	}
+	
+	public void reincarnate() {
+		hasPulse = true;
+		cell.setBackground(Constants.LIVE_CELL_BACKGROUND_COLOR);
+	}
+	
+	public boolean getMortality() {
+		return hasPulse;
 	}
 	
 	private class UI extends MetalButtonUI {
@@ -51,7 +61,7 @@ public class Cell extends JButton {
 	@Override
 	public void mouseEntered(MouseEvent e) {
 //		if((e.getSource() instanceof Cell) && ((e.getModifiers() & InputEvent.BUTTON1_MASK) == InputEvent.BUTTON1_MASK)) {
-//			((Cell) e.getSource()).changeState();
+//			((Cell) e.getSource()).changeMortality();
 //		}
 	}
 
@@ -63,7 +73,7 @@ public class Cell extends JButton {
 	@Override
 	public void mousePressed(MouseEvent e) {
 		if(e.getSource() instanceof Cell) {
-			((Cell) e.getSource()).changeState();
+			((Cell) e.getSource()).changeMortality();
 		}
 	}
 
