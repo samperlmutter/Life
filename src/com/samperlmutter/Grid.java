@@ -54,6 +54,10 @@ public class Grid extends JPanel {
 		return coordinate;
 	}
 	
+	public void printCellCoordinate(Cell cell) {
+		System.out.println("Cell: (" + Game.grid.getCellCoordinate(cell)[0] + ", " + Game.grid.getCellCoordinate(cell)[1] + ")");
+	}
+	
 	public Cell getCell(int x, int y) {
 		return cells.get(x).get(y);
 	}
@@ -65,16 +69,16 @@ public class Grid extends JPanel {
 		int[][] neighborCoordinate = {{-1, 1}, {0, 1}, {1, 1}, {-1, 0}, {1, 0}, {-1, -1}, {0, 1}, {1, -1}};
 		
 		for (int i = 0; i < neighborCoordinate.length; i++) {
-			if (getCell(x, y)) {
+			if (getCell(x, y) != null) {
 				if (getCell(x, y).getMortality()) {
 					liveNeighbors++;
 				}
 			}
 		}
-		//life rules logic
+		
 		if (liveNeighbors == 3 && !cell.getMortality()) {
 			cell.reincarnate();
-		} else if (liveNeighbors <= 1 || liveNeigbors >= 4) {
+		} else if (liveNeighbors <= 1 || liveNeighbors >= 4) {
 			cell.die();
 		}
 	}
