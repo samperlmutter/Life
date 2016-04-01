@@ -15,13 +15,11 @@ public class Game {
 		mainPanel = new JPanel();
 		grid = new Grid(Constants.X_CELLS, Constants.Y_CELLS);
 		progressionButton = new GenerationButton(GenerationButton.Progression.PROGRESSION);
-		regressionButton = new GenerationButton(GenerationButton.Progression.REGRESSION);
 		
 		window.setSize(Constants.WINDOW_WIDTH, Constants.WINDOW_HEIGHT);
 		window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		mainPanel.setBackground(Constants.BACKGROUND_COLOR);
 		mainPanel.add(grid);
-		mainPanel.add(regressionButton);
 		mainPanel.add(progressionButton);
 		window.add(mainPanel);
 		window.setLocationRelativeTo(null);
