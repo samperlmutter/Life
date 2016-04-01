@@ -13,4 +13,7 @@ public class Constants {
 	public static final Color DEAD_CELL_BACKGROUND_COLOR = Color.BLACK;
 	public static final Color LIVE_CELL_BACKGROUND_COLOR = Color.WHITE;
 	public static final Color CELL_BORDER_COLOR = Color.WHITE;
+	public static final String PROGRESSION_BUTTON_NAME = "Next generation";
+	public static final String REGRESSION_BUTTON_NAME = "Previous generation";
+	public static final String RESET_BUTTON_NAME = "Reset grid";
 }

@@ -24,20 +24,15 @@ public class GenerationButton extends JButton {
 	public GenerationButton(Progression progression) {
 		switch (progression) {
 			case PROGRESSION:
-				progressionName = "Next generation";
+				setText(Constants.PROGRESSION_BUTTON_NAME);
 				break;
 			case REGRESSION:
-				progressionName = "Previous generation";
+				setText(Constants.REGRESSION_BUTTON_NAME);
 				break;
 		}
 		setUI(new UI());
-		setText(progressionName);
 		addMouseListener(new ButtonListener());
 		updatedCells = new ArrayList<Cell>();
-	}
-	
-	public String getName() {
-		return progressionName;
 	}
 
 	public void update() {
@@ -114,6 +109,7 @@ public class GenerationButton extends JButton {
 	private class UI extends MetalButtonUI {
 		@Override
 		protected void paintButtonPressed(Graphics g, AbstractButton b) {
+			
 		}
 	}
 }

@@ -91,18 +91,19 @@ public class Cell extends JButton {
 				setBackground(Constants.LIVE_CELL_BACKGROUND_COLOR);
 				break;
 		}
-		updateLiveNeighbors();
 		updateSurroundingNeighbors();
 	}
 	
 	public void die() {
 		cellState = CellState.DEAD;
 		setBackground(Constants.DEAD_CELL_BACKGROUND_COLOR);
+		updateSurroundingNeighbors();
 	}
 	
 	public void reincarnate() {
 		cellState = CellState.ALIVE;
 		setBackground(Constants.LIVE_CELL_BACKGROUND_COLOR);
+		updateSurroundingNeighbors();
 	}
 	
 	public CellState getMortality() {
