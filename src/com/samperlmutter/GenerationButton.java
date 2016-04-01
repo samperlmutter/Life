@@ -18,7 +18,6 @@ public class GenerationButton extends JButton {
 		REGRESSION, PROGRESSION
 	}
 
-	private String progressionName;
 	private List<Cell> updatedCells;
 
 	public GenerationButton(Progression progression) {
