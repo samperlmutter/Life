@@ -36,6 +36,10 @@ public class Grid extends JPanel {
 		}
 	}
 	
+//	public void applyGrid(Grid grid) {
+//		for ()
+//	}
+	
 	private void setCellNeighbors(Cell cell) {
 		int cellX = getCellCoordinate(cell)[0];
 		int cellY = getCellCoordinate(cell)[1];

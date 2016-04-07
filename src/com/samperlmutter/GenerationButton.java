@@ -19,9 +19,13 @@ public class GenerationButton extends JButton {
 	}
 
 	private List<Cell> updatedCells;
+	private static List<Grid> generations = new ArrayList<Grid>(5);
+	private static int generation;
+	private Progression progressionType;
 
 	public GenerationButton(Progression progression) {
-		switch (progression) {
+		progressionType = progression;
+		switch (progressionType) {
 			case PROGRESSION:
 				setText(Constants.PROGRESSION_BUTTON_NAME);
 				break;
@@ -32,20 +36,47 @@ public class GenerationButton extends JButton {
 		setUI(new UI());
 		addMouseListener(new ButtonListener());
 		updatedCells = new ArrayList<Cell>();
+		generations.get(0);
+//		generations.set(0, Game.grid);
+		generation++;
+	}
+	
+	public int getCurrentGeneration() {
+		return generation;
+	}
+	
+	public int getNumGenerations() {
+		return generations.size();
+	}
+	
+	private void storeGrid() {
+		generations.add(Game.grid);
 	}
 
-	public void update() {
-		for (List<Cell> row : Game.grid.getGrid()) {
-			for (Cell cell : row) {
-				decideFate(cell);
-			}
+	private void previousGeneration() {
+		if (generation > 0) {
+			
+			generation--;
 		}
-		updateCells();
-		for (List<Cell> row : Game.grid.getGrid()) {
-			for (Cell cell : row) {
-				cell.updateSurroundingNeighbors();
+	}
+	
+	private void nextGeneration() {
+		if (generation == generations.size()) {
+			for (List<Cell> row : Game.grid.getGrid()) {
+				for (Cell cell : row) {
+					decideFate(cell);
+				}
 			}
+			updateCells();
+			for (List<Cell> row : Game.grid.getGrid()) {
+				for (Cell cell : row) {
+					cell.updateSurroundingNeighbors();
+				}
+			}
+			storeGrid();
+			generations.get(generation).getCell(0, 0).printInfo();
 		}
+		generation++;
 	}
 	
 	private void updateCells() {
@@ -80,7 +111,14 @@ public class GenerationButton extends JButton {
 
 		@Override
 		public void mouseClicked(MouseEvent e) {
-			update();
+			switch (progressionType) {
+				case PROGRESSION:
+					nextGeneration();
+					break;
+				case REGRESSION:
+					previousGeneration();
+					break;
+			}
 		}
 
 		@Override
